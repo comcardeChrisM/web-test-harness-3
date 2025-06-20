@@ -14,6 +14,7 @@ import {
 import BearerTokens from '@/components/configurators/bearertokens'
 import Header from '@/components/layout/header'
 import ContentPanels from '@/components/panels/ContentPanels'
+import PaymentsContainer from '@/components/payments'
 import ResultsLogs from '@/components/status/Results.Logs'
 import { BearerToken, BearerTokenTitle } from '@/types/general'
 
@@ -51,9 +52,7 @@ export default function Home() {
               title="Payment Configuration"
               description="Configure payment method and amount"
             >
-              <div>
-                <p>CONTENT INCOMING</p>
-              </div>
+              <PaymentsContainer />
             </ContentPanels>
           </div>
           {/* Results Panel*/}
