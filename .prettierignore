@@ -1,0 +1,17 @@
+# Ignore build folders
+build_output/
+.next 
+
+# Ignore dependencies
+node_modules
+CHANGELOG.md
+coverage
+*storybook.log
+
+# Storybook
+*storybook.log
+/storybook-static
+/public/storybook
+
+# Jenkins core dumps
+core.*

@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bridge-teal-50: #f0fdfa;
+  --color-bridge-teal-100: #ccfbf1;
+  --color-bridge-teal-200: #99f6e4;
+  --color-bridge-teal-300: #5eead4;
+  --color-bridge-teal-400: #2dd4bf;
+  --color-bridge-teal-500: #14b8a6;
+  --color-bridge-teal-600: #0d9488;
+  --color-bridge-teal-700: #0f766e;
+  --color-bridge-teal-800: #115e59;
+  --color-bridge-teal-900: #134e4a;
+  --color-bridge-teal-950: #042f2e;
+
+  --color-bridge-purple-50: #faf5ff;
+  --color-bridge-purple-100: #f3e8ff;
+  --color-bridge-purple-200: #e9d5ff;
+  --color-bridge-purple-300: #d8b4fe;
+  --color-bridge-purple-400: #c084fc;
+  --color-bridge-purple-500: #a855f7;
+  --color-bridge-purple-600: #9333ea;
+  --color-bridge-purple-700: #7c3aed;
+  --color-bridge-purple-800: #6b21a8;
+  --color-bridge-purple-900: #581c87;
+
+  --color-bridge-green-50: #f0fdf4;
+  --color-bridge-green-100: #dcfce7;
+  --color-bridge-green-200: #bbf7d0;
+  --color-bridge-green-300: #86efac;
+  --color-bridge-green-400: #4ade80;
+  --color-bridge-green-500: #22c55e;
+  --color-bridge-green-600: #16a34a;
+  --color-bridge-green-700: #15803d;
 }
+
+.gradient-teal {
+  background: linear-gradient(to right, var(--color-bridge-teal-800), var(--color-bridge-teal-900));
+}
+
+.gradient-button {
+  background: linear-gradient(to right, var(--color-bridge-green-500), var(--color-bridge-teal-600));
+}
+
+.gradient-bg {
+  background: linear-gradient(to bottom right, var(--color-bridge-teal-50), white);
+}
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@layer utilities {
+  :root {
+    --background: #fff;
+    --foreground: #171717;
+    --header-color: rgb(147 51 234);
+    --header-font-size: 22rem;
+    --gradient-from: var(--background);
+    --gradient-to: #f0fdfa;
+    --font-sans: Forth, Arial, Helvetica, sans-serif;
+    --font-mono: monospace;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: gradient(var(--gradient-from), var(--gradient-to));
+    --foreground: #171717;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #ededed;
+    --foreground: #171717;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
 }
