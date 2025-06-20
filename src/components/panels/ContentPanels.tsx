@@ -17,7 +17,7 @@ export default function ContentPanels({
         <h2 className="text-lg font-semibold">{title}</h2>
         <p className="mt-1 text-sm text-slate-300">{description}</p>
       </div>
-      <div className="space-y-4 p-6">{children}</div>
+      <div className="space-y-4 px-4 py-6">{children}</div>
     </div>
   )
 }

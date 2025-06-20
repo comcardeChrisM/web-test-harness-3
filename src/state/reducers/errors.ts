@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from 'immer'
 
+import { GlobalError } from '@/types/general'
+
 export interface Tokens {
-  globalError: object | null
+  globalError: GlobalError | null
 }
 
 const initialState: Tokens = {
@@ -16,12 +18,11 @@ export const errorsSlice = createSlice({
     setGlobalError: {
       reducer(
         state: WritableDraft<Tokens>,
-        action: PayloadAction<object | null>
+        action: PayloadAction<GlobalError | null>
       ) {
-        console.debug(action.payload)
         state.globalError = action.payload
       },
-      prepare(value: object | null) {
+      prepare(value: GlobalError | null) {
         return { payload: value }
       },
     },

@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from 'immer'
 
+import { ClientConfigResponse } from '@/types/general'
+
 export interface ClientConfiguration {
-  config: object
+  config: ClientConfigResponse | object
 }
 
 const initialState: ClientConfiguration = {
@@ -16,11 +18,11 @@ export const clientConfigurationSlice = createSlice({
     setClientConfiguration: {
       reducer(
         state: WritableDraft<ClientConfiguration>,
-        action: PayloadAction<object>
+        action: PayloadAction<ClientConfigResponse>
       ) {
         state.config = action.payload
       },
-      prepare(value: object) {
+      prepare(value: ClientConfigResponse) {
         return { payload: value }
       },
     },

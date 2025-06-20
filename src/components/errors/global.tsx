@@ -1,23 +1,28 @@
 import { useSelector } from 'react-redux'
 
 import { RootState } from '@/state'
+import { GlobalError } from '@/types/general'
 
 export default function GlobalErrors() {
-  const displayErrorState = useSelector(
+  const displayErrorState: GlobalError | null = useSelector(
     (state: RootState) => state.errors.globalError
   )
-
-  console.log(displayErrorState)
 
   return (
     <>
       {(displayErrorState && (
-        <>
-          <div className="border border-red-500">
-            <pre>{displayErrorState.toString()}</pre>
-          </div>
-        </>
-      )) || <p>Everything is golden</p>}
+        <div className="h-16 overflow-x-hidden overflow-y-auto rounded-sm border border-red-500 p-1 text-xs">
+          <p>Message: {displayErrorState?.message}</p>
+          <p>Name: {displayErrorState?.name}</p>
+          <p>
+            Stack Trace: <pre>{displayErrorState?.stack}</pre>
+          </p>
+        </div>
+      )) || (
+        <div className="h-16 overflow-x-hidden overflow-y-auto rounded-sm border border-green-500 p-1 text-xs">
+          <p>Everything is fine!</p>
+        </div>
+      )}
     </>
   )
 }

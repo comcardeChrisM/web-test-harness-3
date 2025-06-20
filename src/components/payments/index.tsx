@@ -1,16 +1,26 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
+import PaymentTabs from '@/components/basic/paymenttabs'
 import { RootState } from '@/state'
 
 export default function PaymentsContainer() {
-  const clientBearerToken: string | null = useSelector(
-    (state: RootState) => state.tokens.client
+  const [setUpComplete, setSetupComplete] = useState(false)
+
+  const clientConfiguration: object | null = useSelector(
+    (state: RootState) => state.clientConfiguration.config
   )
 
   return (
-    <div>
-      <h3>PAYMENTS Placeholder</h3>
-      <p>CLIENT: {clientBearerToken}</p>
+    <div className="">
+      <PaymentTabs />
+      <pre>{JSON.stringify(clientConfiguration)}</pre>
+      {(!setUpComplete && <p>Configuring your payment options!</p>) || (
+        <p>SETUP COMPLETE</p>
+      )}
+      <div>
+        <p>This is a placeholder for the payment options.</p>
+      </div>
     </div>
   )
 }
